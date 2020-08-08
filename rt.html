@@ -1,105 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My experiment</title>
+    <script src="jspsych-6.0.5/jspsych.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-html-keyboard-response.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-image-keyboard-response.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-audio-button-response.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-audio-keyboard-response.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-audio-slider-response.js"></script>
 
-/* Change 1: Adding the image hosting site */
-// define the site that hosts stimuli images
-// usually https://https://jlai11-uofr.github.io/test/
-var repo_site = "https://kywch.github.io/Simple-RT-Task/"; 
+    <link href="jspsych-6.0.5/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+  </head>
+  <body></body>
+  <script>
 
-/* create timeline */
-var timeline = [];
+    /* create timeline */
+    var timeline = [];
 
-/* define welcome message trial */
-var welcome_block = {
-    type: "html-keyboard-response",
-    stimulus: "Welcome to the experiment. Press any key to begin."
+    /* define welcome message trial */
+    var welcome = {
+      type: "html-keyboard-response",
+      stimulus: "Welcome to the experiment. Press any key to begin."
+    };
+    timeline.push(welcome);
+
+
+    var trial = {
+      type: 'audio-keyboard-response',
+      stimulus: 'stimulus/Sound10c.wav',
+      choices: ['e', 'i'],
+      prompt: "<p>Is the pitch high or low? Press 'e' for low and 'i' for high.</p>",
+    response_ends_trial: false
+  };
+
+  var trial1 = {
+    type: 'audio-slider-response',
+    stimulus: 'sound/tone.mp3',
+    choices: ['1','2','3','4','5','6','7','8'],
+    prompt: "<p>Is the pitch high or low? Press 'e' for low and 'i' for high.</p>",
+  response_ends_trial: false
 };
-timeline.push(welcome_block);
 
-/* define instructions trial */
-var instructions = {
-    type: "html-keyboard-response",
-    stimulus: "<p>In this experiment, a circle will appear in the center " +
-        "of the screen.</p><p>If the circle is <strong>blue</strong>, " +
-        "press the letter F on the keyboard as fast as you can.</p>" +
-        "<p>If the circle is <strong>orange</strong>, press the letter J " +
-        "as fast as you can.</p>" +
-        "<div style='width: 700px;'>" +
-        "<div style='float: left;'><img src='" + repo_site + "img/blue.png'></img>" + // Change 2: Adding `repo_site` in `instructions`
-        "<p class='small'><strong>Press the F key</strong></p></div>" +
-        "<div class='float: right;'><img src='" + repo_site + "img/orange.png'></img>" + // Change 2: Adding `repo_site` in `instructions`
-        "<p class='small'><strong>Press the J key</strong></p></div>" +
-        "</div>" +
-        "<p>Press any key to begin.</p>",
-    post_trial_gap: 2000
-};
-timeline.push(instructions);
+    timeline.push(trial1);
+    timeline.push(trial);
 
-/* test trials */
+    /* define instructions trial */
+    var instructions = {
+      type: "html-keyboard-response",
+      stimulus: "<p>In this experiment, a circle will appear in the center " +
+          "of the screen.</p><p>If the circle is <strong>blue</strong>, " +
+          "press the letter F on the keyboard as fast as you can.</p>" +
+          "<p>If the circle is <strong>orange</strong>, press the letter J " +
+          "as fast as you can.</p>" +
+          "<div style='width: 700px;'>"+
+          "<div style='float: left;'><img src='img/blue.png'></img>" +
+          "<p class='small'><strong>Press the F key</strong></p></div>" +
+          "<div class='float: right;'><img src='img/orange.png'></img>" +
+          "<p class='small'><strong>Press the J key</strong></p></div>" +
+          "</div>"+
+          "<p>Press any key to begin.</p>",
+      post_trial_gap: 2000
+    };
+    timeline.push(instructions);
 
-var test_stimuli = [{
-        stimulus: repo_site + "img/blue.png", // Change 3: Adding `repo_site` in `test_stimuli`
-        data: {
-            test_part: 'test',
-            correct_response: 'f'
-        }
-    },
-    {
-        stimulus: repo_site + "img/orange.png", // Change 3: Adding `repo_site` in `test_stimuli`
-        data: {
-            test_part: 'test',
-            correct_response: 'j'
-        }
-    }
-];
+    /* test trials */
 
-var fixation = {
-    type: 'html-keyboard-response',
-    stimulus: '<div style="font-size:60px;">+</div>',
-    choices: jsPsych.NO_KEYS,
-    trial_duration: function () {
+    var test_stimuli = [
+      { stimulus: "img/blue.png", data: { test_part: 'test', correct_response: 'f' } },
+      { stimulus: "img/orange.png", data: { test_part: 'test', correct_response: 'j' } }
+    ];
+
+    var fixation = {
+      type: 'html-keyboard-response',
+      stimulus: '<div style="font-size:60px;">+</div>',
+      choices: jsPsych.NO_KEYS,
+      trial_duration: function(){
         return jsPsych.randomization.sampleWithoutReplacement([250, 500, 750, 1000, 1250, 1500, 1750, 2000], 1)[0];
-    },
-    data: {
-        test_part: 'fixation'
+      },
+      data: {test_part: 'fixation'}
     }
-}
 
-var test = {
-    type: "image-keyboard-response",
-    stimulus: jsPsych.timelineVariable('stimulus'),
-    choices: ['f', 'j'],
-    data: jsPsych.timelineVariable('data'),
-    on_finish: function (data) {
+    var test = {
+      type: "image-keyboard-response",
+      stimulus: jsPsych.timelineVariable('stimulus'),
+      choices: ['f', 'j'],
+      data: jsPsych.timelineVariable('data'),
+      on_finish: function(data){
         data.correct = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode(data.correct_response);
-    },
-}
+      },
+    }
 
-var test_procedure = {
-    timeline: [fixation, test],
-    timeline_variables: test_stimuli,
-    repetitions: 5,
-    randomize_order: true
-}
-timeline.push(test_procedure);
+    var test_procedure = {
+      timeline: [fixation, test],
+      timeline_variables: test_stimuli,
+      repetitions: 5,
+      randomize_order: true
+    }
+    timeline.push(test_procedure);
 
-/* define debrief */
+    /* define debrief */
 
-var debrief_block = {
-    type: "html-keyboard-response",
-    stimulus: function () {
+    var debrief_block = {
+      type: "html-keyboard-response",
+      stimulus: function() {
 
-        var trials = jsPsych.data.get().filter({
-            test_part: 'test'
-        });
-        var correct_trials = trials.filter({
-            correct: true
-        });
+        var trials = jsPsych.data.get().filter({test_part: 'test'});
+        var correct_trials = trials.filter({correct: true});
         var accuracy = Math.round(correct_trials.count() / trials.count() * 100);
         var rt = Math.round(correct_trials.select('rt').mean());
 
-        return "<p>You responded correctly on " + accuracy + "% of the trials.</p>" +
-            "<p>Your average response time was " + rt + "ms.</p>" +
-            "<p>Press any key to complete the experiment. Thank you!</p>";
+        return "<p>You responded correctly on "+accuracy+"% of the trials.</p>"+
+        "<p>Your average response time was "+rt+"ms.</p>"+
+        "<p>Press any key to complete the experiment. Thank you!</p>";
 
-    }
-};
-timeline.push(debrief_block);
+      }
+    };
+    timeline.push(debrief_block);
+
+    /* start the experiment */
+    jsPsych.init({
+      timeline: timeline,
+      on_finish: function() {
+        jsPsych.data.displayData();
+      }
+    });
+  </script>
+</html>
+
