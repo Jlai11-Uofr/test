@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My experiment</title>
+    <script src="jspsych-6.0.5/jspsych.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-html-keyboard-response.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-html-button-response.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-image-keyboard-response.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-audio-button-response.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-audio-keyboard-response.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-audio-slider-response.js"></script>
+
+    <link href="jspsych-6.0.5/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+  </head>
+  <body style="background-color:black;"></body>
+  <script>
+
+    /* create timeline */
+    var timeline = [];
+
+
+//                ******************Helper Function in python 3.7 that will help do stuff*
+/* import os
+
+directory = "C:\\Users\\Jonathan\\Desktop\\Js\\stimuli\\stimuli"
+
+
+empty_arary = []
+for item in os.listdir(directory):
+    empty_arary.append(item)
+
+*/
+
+    var source1 =  "stimuli/stimuli/";
+    var x = ['Noise.wav', 'Sound10c.wav', 'Sound10s.wav', 'Sound11c.wav', 'Sound11s.wav', 'Sound12c.wav', 'Sound12s.wav', 'Sound13c.wav', 'Sound13s.wav', 'Sound14c.wav', 'Sound14s.wav', 'Sound15c.wav', 'Sound15s.wav', 'Sound16c.wav', 'Sound16s.wav', 'Sound17c.wav', 'Sound17s.wav', 'Sound18c.wav', 'Sound18s.wav','Sound19c.wav','Sound19s.wav', 'Sound1c.wav', 'Sound1s.wav', 'Sound20c.wav', 'Sound20s.wav', 'Sound21c.wav', 'Sound21s.wav', 'Sound22c.wav', 'Sound22s.wav', 'Sound23c.wav', 'Sound23s.wav', 'Sound24c.wav', 'Sound24s.wav', 'Sound25c.wav', 'Sound25s.wav', 'Sound2c.wav', 'Sound2s.wav', 'Sound3c.wav', 'Sound3s.wav', 'Sound4c.wav', 'Sound4s.wav', 'Sound5c.wav', 'Sound5s.wav', 'Sound6c.wav', 'Sound6s.wav', 'Sound7c.wav', 'Sound7s.wav', 'Sound8c.wav', 'Sound8s.wav', 'Sound9c.wav', 'Sound9s.wav']
+
+    var x =   shuffle(x)
+
+
+
+    var file =  [];
+
+    for(i = 0 ;i<x.length; ++i) {
+          file.push(source1.concat(x[i]))
+
+    }
+
+
+    function shuffle(a) {
+        var j, x, i;
+        for (i = a.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            x = a[i];
+            a[i] = a[j];
+            a[j] = x;
+        }
+        return a;
+    }
+
+
+
+
+
+
+
+
+    //todo Add all the files to to this
+
+
+    var welcome = {
+      type: "html-keyboard-response",
+      stimulus: "Welcome to the experiment."
+    };
+    timeline.push(welcome);
+
+
+
+
+
+    var welcome1 = {
+      type: "html-keyboard-response",
+      stimulus: '<p style="color:red;">Here are some instructions on how to do this task. How well can you hear this task and select a number 1-7</p>'
+    };
+    timeline.push(welcome1);
+    var i;
+
+//Pop
+for( i = 0 ; i <2; ++i) {
+
+
+  var continue1 = {
+    type: 'html-button-response',
+    stimulus: '<p style="color:red;">Click continue to move on to the next step<p>',
+  // stimulus: "stimuli/stimuli/Noise.wav",
+    choices:['continue'],
+    prompt: '<p style="color:red;">Please press</p>',
+    response_ends_trial: true
+};
+    timeline.push(continue1);
+
+
+
+
+  var trial1 = {
+    type: 'audio-button-response',
+    stimulus: file.pop(),
+  // stimulus: "stimuli/stimuli/Noise.wav",
+    choices: ['1', '2','3','4','5','6','7'],
+    prompt: '<p style="color:red;">Please Rate 1-7</p>',
+    response_ends_trial: true
+};
+    timeline.push(trial1);
+}
+    /* define welcome message trial */
+
+
+
+
+
+
+
+
+
+    /* define instructions trial */
+    var instructions = {
+      type: "html-keyboard-response",
+      stimulus: "<p>In this experiment, a circle will appear in the center " +
+          "of the screen.</p><p>If the circle is <strong>blue</strong>, " +
+          "press the letter F on the keyboard as fast as you can.</p>" +
+          "<p>If the circle is <strong>orange</strong>, press the letter J " +
+          "as fast as you can.</p>" +
+          "<div style='width: 700px;'>"+
+          "<div style='float: left;'><img src='img/blue.png'></img>" +
+          "<p class='small'><strong>Press the F key</strong></p></div>" +
+          "<div class='float: right;'><img src='img/orange.png'></img>" +
+          "<p class='small'><strong>Press the J key</strong></p></div>" +
+          "</div>"+
+          "<p>Press any key to begin.</p>",
+      post_trial_gap: 2000
+    };
+    timeline.push(instructions);
+
+    /* test trials */
+
+    var test_stimuli = [
+      { stimulus: "img/blue.png", data: { test_part: 'test', correct_response: 'f' } },
+      { stimulus: "img/orange.png", data: { test_part: 'test', correct_response: 'j' } }
+    ];
+
+    var fixation = {
+      type: 'html-keyboard-response',
+      stimulus: '<div style="font-size:60px;">+</div>',
+      choices: jsPsych.NO_KEYS,
+      trial_duration: function(){
+        return jsPsych.randomization.sampleWithoutReplacement([250, 500, 750, 1000, 1250, 1500, 1750, 2000], 1)[0];
+      },
+      data: {test_part: 'fixation'}
+    }
+
+    var test = {
+      type: "image-keyboard-response",
+      stimulus: jsPsych.timelineVariable('stimulus'),
+      choices: ['f', 'j'],
+      data: jsPsych.timelineVariable('data'),
+      on_finish: function(data){
+        data.correct = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode(data.correct_response);
+      },
+    }
+
+    var test_procedure = {
+      timeline: [fixation, test],
+      timeline_variables: test_stimuli,
+      repetitions: 5,
+      randomize_order: true
+    }
+    timeline.push(test_procedure);
+
+    /* define debrief */
+
+    var debrief_block = {
+      type: "html-keyboard-response",
+      stimulus: function() {
+
+        var trials = jsPsych.data.get().filter({test_part: 'test'});
+        var correct_trials = trials.filter({correct: true});
+        var accuracy = Math.round(correct_trials.count() / trials.count() * 100);
+        var rt = Math.round(correct_trials.select('rt').mean());
+
+        return "<p>You responded correctly on "+accuracy+"% of the trials.</p>"+
+        "<p>Your average response time was "+rt+"ms.</p>"+
+        "<p>Press any key to complete the experiment. Thank you!</p>";
+
+      }
+    };
+    timeline.push(debrief_block);
+
+    /* start the experiment */
+    jsPsych.init({
+      timeline: timeline,
+      on_finish: function() {
+      //  jsPsych.data.displayData();
+      }
+    });
+  </script>
+</html>
