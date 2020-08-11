@@ -3,6 +3,8 @@
   <head>
     <title>My experiment</title>
     <script src="jspsych-6.0.5/jspsych.js"></script>
+      <script src="jspsych-6.0.5/plugins/jspsych-fullscreen.js"></script>
+          <script src="jspsych-6.0.5/plugins/jspsych-survey-html-form.js"></script>
     <script src="jspsych-6.0.5/plugins/jspsych-html-keyboard-response.js"></script>
     <script src="jspsych-6.0.5/plugins/jspsych-html-button-response.js"></script>
     <script src="jspsych-6.0.5/plugins/jspsych-image-keyboard-response.js"></script>
@@ -30,7 +32,25 @@ for item in os.listdir(directory):
     empty_arary.append(item)
 
 */
+var fullscreen_trial = {
+  type: 'fullscreen',
+  message: '<p style="color:red;">The experiment will switch to full screen mode when you press the button below</p>',
+  fullscreen_mode: true
+}
 
+
+
+timeline.push(fullscreen_trial);
+
+
+var form_trial = {
+  type: 'survey-html-form',
+  preamble: '<p style="color:red;">Input Participant ID</b> </p>',
+  html:'<p style="color:red;"> ID <input name="id" type="text" />  </p>'
+};
+
+
+timeline.push(form_trial);
     var source1 =  "stimuli/";
     var x = ['Noise.wav', 'Sound10c.wav', 'Sound10s.wav', 'Sound11c.wav', 'Sound11s.wav', 'Sound12c.wav', 'Sound12s.wav', 'Sound13c.wav', 'Sound13s.wav', 'Sound14c.wav', 'Sound14s.wav', 'Sound15c.wav', 'Sound15s.wav', 'Sound16c.wav', 'Sound16s.wav', 'Sound17c.wav', 'Sound17s.wav', 'Sound18c.wav', 'Sound18s.wav','Sound19c.wav','Sound19s.wav', 'Sound1c.wav', 'Sound1s.wav', 'Sound20c.wav', 'Sound20s.wav', 'Sound21c.wav', 'Sound21s.wav', 'Sound22c.wav', 'Sound22s.wav', 'Sound23c.wav', 'Sound23s.wav', 'Sound24c.wav', 'Sound24s.wav', 'Sound25c.wav', 'Sound25s.wav', 'Sound2c.wav', 'Sound2s.wav', 'Sound3c.wav', 'Sound3s.wav', 'Sound4c.wav', 'Sound4s.wav', 'Sound5c.wav', 'Sound5s.wav', 'Sound6c.wav', 'Sound6s.wav', 'Sound7c.wav', 'Sound7s.wav', 'Sound8c.wav', 'Sound8s.wav', 'Sound9c.wav', 'Sound9s.wav']
 
@@ -42,7 +62,6 @@ for item in os.listdir(directory):
 
     for(i = 0 ;i<x.length; ++i) {
           file.push(source1.concat(x[i]))
-
     }
 
 
@@ -69,7 +88,7 @@ for item in os.listdir(directory):
 
     var welcome = {
       type: "html-keyboard-response",
-      stimulus: "Welcome to the experiment."
+      stimulus: '<p style="color:red;">In this task, you will be asked to listen to sound fragments. After each sound fragment plays, you will be asked whether or not you hear a voice speaking. The voice may be loud or extremely soft and just below auditory threshold. Please listen carefully. After each sound fragement you will be asked whether or not you heard a voice and how confident you are in this judgement.Do you have any questions? If not press any key to begin</p>'
     };
     timeline.push(welcome);
 
@@ -77,26 +96,17 @@ for item in os.listdir(directory):
 
 
 
-    var welcome1 = {
-      type: "html-keyboard-response",
-      stimulus: '<p style="color:red;">Here are some instructions on how to do this task. How well can you hear this task and select a number 1-7</p>'
-    };
-    timeline.push(welcome1);
+
     var i;
 
+
+
+
+
 //Pop
-for( i = 0 ; i <2; ++i) {
+for( i = 0 ; i <x.length; ++i) {
 
-
-  var continue1 = {
-    type: 'html-button-response',
-    stimulus: '<p style="color:red;">Click continue to move on to the next step<p>',
-  // stimulus: "stimuli/stimuli/Noise.wav",
-    choices:['continue'],
-    prompt: '<p style="color:red;">Please press</p>',
-    response_ends_trial: true
-};
-    timeline.push(continue1);
+//
 
 
 
@@ -105,11 +115,24 @@ for( i = 0 ; i <2; ++i) {
     type: 'audio-button-response',
     stimulus: file.pop(),
   // stimulus: "stimuli/stimuli/Noise.wav",
-    choices: ['1', '2','3','4','5','6','7'],
-    prompt: '<p style="color:red;">Please Rate 1-7</p>',
+    choices: ['yes','no'],
+    prompt: '<p style="color:red;"">Do you hear a voice?</p>',
     response_ends_trial: true
 };
     timeline.push(trial1);
+
+
+
+
+      var trial2 = {
+        type: 'html-button-response',
+        stimulus: '<p style="color:red;" >How confident are you<p>',
+    //  stimulus:' <p id=></p>',
+        choices: ['1', '2','3','4','5','6','7'],
+        prompt: '<p>Please Rate 1-7</p>',
+        response_ends_trial: true
+    };
+        timeline.push(trial2);
 }
     /* define welcome message trial */
 
@@ -121,26 +144,9 @@ for( i = 0 ; i <2; ++i) {
 
 
 
-    /* define instructions trial */
-    var instructions = {
-      type: "html-keyboard-response",
-      stimulus: "<p>In this experiment, a circle will appear in the center " +
-          "of the screen.</p><p>If the circle is <strong>blue</strong>, " +
-          "press the letter F on the keyboard as fast as you can.</p>" +
-          "<p>If the circle is <strong>orange</strong>, press the letter J " +
-          "as fast as you can.</p>" +
-          "<div style='width: 700px;'>"+
-          "<div style='float: left;'><img src='img/blue.png'></img>" +
-          "<p class='small'><strong>Press the F key</strong></p></div>" +
-          "<div class='float: right;'><img src='img/orange.png'></img>" +
-          "<p class='small'><strong>Press the J key</strong></p></div>" +
-          "</div>"+
-          "<p>Press any key to begin.</p>",
-      post_trial_gap: 2000
-    };
-    timeline.push(instructions);
 
-    /* test trials */
+
+    /* test trials
 
     var test_stimuli = [
       { stimulus: "img/blue.png", data: { test_part: 'test', correct_response: 'f' } },
@@ -177,28 +183,15 @@ for( i = 0 ; i <2; ++i) {
 
     /* define debrief */
 
-    var debrief_block = {
-      type: "html-keyboard-response",
-      stimulus: function() {
 
-        var trials = jsPsych.data.get().filter({test_part: 'test'});
-        var correct_trials = trials.filter({correct: true});
-        var accuracy = Math.round(correct_trials.count() / trials.count() * 100);
-        var rt = Math.round(correct_trials.select('rt').mean());
 
-        return "<p>You responded correctly on "+accuracy+"% of the trials.</p>"+
-        "<p>Your average response time was "+rt+"ms.</p>"+
-        "<p>Press any key to complete the experiment. Thank you!</p>";
-
-      }
-    };
-    timeline.push(debrief_block);
 
     /* start the experiment */
     jsPsych.init({
       timeline: timeline,
       on_finish: function() {
-      //  jsPsych.data.displayData();
+
+        jsPsych.data.displayData('csv');
       }
     });
   </script>
