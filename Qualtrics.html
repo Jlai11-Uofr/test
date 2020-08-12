@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My experiment</title>
+    <script src="jspsych-6.0.5/jspsych.js"></script>
+      <script src="jspsych-6.0.5/plugins/jspsych-fullscreen.js"></script>
+          <script src="jspsych-6.0.5/plugins/jspsych-survey-html-form.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-html-keyboard-response.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-html-button-response.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-image-keyboard-response.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-audio-button-response.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-audio-keyboard-response.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-audio-slider-response.js"></script>
+    <script src="Qualtrics.js"></script> 
+    <link href="jspsych-6.0.5/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+  </head>
+  <body style="background-color:black;"></body>
+  <script>
+
+
+    jsPsych.init({
+      timeline: timeline,
+      on_finish: function() {
+
+        jsPsych.data.displayData('csv');
+      }
+    });
+  </script>
+</html>
