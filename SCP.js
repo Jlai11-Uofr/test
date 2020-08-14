@@ -139,7 +139,7 @@ var Practice = [];
 
  var welcome1 = {
      type: 'image-button-response',
-     stimulus:  'img/stopsign.png',
+     stimulus:  path+'img/stopsign.png',
      choices: ['Continue'],
      post_trial_gap: 1500,
      prompt: "Congrats! You finished the practice round! Click continue to start the test round"
@@ -201,7 +201,7 @@ test(5000,"test","slow");
 
 var welcome4 = {
     type: 'image-button-response',
-    stimulus:  'img/stopsign.png',
+    stimulus:  path+'img/stopsign.png',
     choices: ['Continue'],
     post_trial_gap: 1500,
     prompt: "Congrats! You finished the test round! Click continue to start the practice round where there is 2400 ms time limit"
@@ -212,7 +212,7 @@ timeline.push(welcome4);
 practice(2400,'practice','fast');
 var welcome4 = {
     type: 'image-button-response',
-    stimulus:  'img/stopsign.png',
+    stimulus:  path+'img/stopsign.png',
     choices: ['Continue'],
     post_trial_gap: 1500,
     prompt:"Start test"
