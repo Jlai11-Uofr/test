@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My experiment</title>
+    <script src="jspsych-6.0.5/jspsych.js"></script>
+      <script src="jspsych-6.0.5/plugins/jspsych-fullscreen.js"></script>
+          <script src="jspsych-6.0.5/plugins/jspsych-survey-html-form.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-html-keyboard-response.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-html-button-response.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-image-keyboard-response.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-audio-button-response.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-audio-keyboard-response.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-audio-slider-response.js"></script>
+      <script src="jspsych-6.0.5/plugins/jspsych-image-button-response.js"></script>
+      <script src="Scp.js"></script>
+    <link href="jspsych-6.0.5/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+  </head>
+  <body >
+   <link href="https://github.com/Jlai11-Uofr/test/blob/master/jspsych-6.0.5/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+
+   <div>
+    <span style="font-size: 24px;">
+    <br><br>
+    If you are seeing this message for <span style="color: rgb(255, 0, 0);"><b>more than 5 minutes</b></span>,<br>
+    please screen-capture this screen and send the image to us.
+    <br><br>
+    <span style="font-size: 28px;">We are very sorry for the inconvenience.</span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+
+<style>
+    #display_stage_background {
+        width: 100vw;
+        background-color: white;
+        z-index: -1;
+    }
+
+    #display_stage {
+        position: fixed;
+        left: 1vw;
+        top: 1vh;
+        height: 98vh;
+        width: 98vw;
+        background-color: whitek;
+        box-shadow: 1px 1px 1px #999;
+        border-radius: 15px;
+        z-index: 0;
+        overflow-y: hidden;
+        overflow-x: hidden;
+    }
+</style>
+
+<div id='display_stage_background'></div>
+<div id='display_stage'></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+  <script>
+
+
+
+
+
+
+jsPsych.init({
+  timeline: timeline,
+  on_finish: function() {
+
+    jsPsych.data.displayData();
+  }
+});
+</script>
+</html>
