@@ -15,7 +15,7 @@ function shuffle(a) {
 
 
 
-
+var y = 0;
 
 
 var pa = ["He forgot his homework", "He arrived 5 minutes late for class","He bumped into a classmate in the hall", "He broke the window","The painter inhaled the fumes,","The painter inahled the fumes","He drank the spoiled milk","She woke the baby up","He stepped in the puddle","He set off the alarm","She jumped when hte bell rang","He dripped paint on the canvas","She kicked her dog"]
@@ -88,7 +88,8 @@ for (i = 0 ; i < 4; ++i)
        data: {
    trialtype: type,
    key: 'ua',
-   speed_trial:speed
+   speed_trial:speed,
+   trial_num : y+1
  }
    };
 //   timeline.push(trial);
@@ -104,7 +105,7 @@ var trial1 = {
        data: {
   trialtype:type,
    key: 'ui',
-   speed_trial:speed
+   speed_trial:speed, trial_num : y+1
  }
    };
 Practice.push(trial1);
@@ -135,7 +136,7 @@ practice(5000,'practice','slow');
 
 
 
-var Practice = [];
+
 
  var welcome1 = {
      type: 'image-button-response',
@@ -151,6 +152,7 @@ var j;
 
 
 function test(time,type,speed) {
+  var Practice = [];
 //Test
 for( j = 0 ; j < 6; ++j) {
   var trial4 = {
@@ -162,7 +164,7 @@ for( j = 0 ; j < 6; ++j) {
       data: {
   trialtype:type,
   key: 'pa',
-  speed_trial:speed
+  speed_trial:speed, trial_num : y+1
  }
   };
 Practice.push(trial4);
@@ -177,7 +179,7 @@ Practice.push(trial4);
       data: {
   trialtype: 'Test',
   key: 'pi',
-  speed_trial:speed
+  speed_trial:speed, trial_num : y+1
  }
   };
 Practice.push(trial5);
@@ -212,7 +214,7 @@ timeline.push(welcome4);
 practice(2400,'practice','fast');
 var welcome4 = {
     type: 'image-button-response',
-    stimulus:  path+'img/stopsign.png',
+    stimulus: path+ 'img/stopsign.png',
     choices: ['Continue'],
     post_trial_gap: 1500,
     prompt:"Start test"
@@ -220,3 +222,4 @@ var welcome4 = {
 timeline.push(welcome4);
 
 test(2400,'test','fast');
+
