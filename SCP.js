@@ -18,12 +18,12 @@ function shuffle(a) {
 var y = 0;
 
 
-var pa = ["He forgot his homework", "He arrived 5 minutes late for class","He bumped into a classmate in the hall", "He broke the window","The painter inhaled the fumes,","The painter inahled the fumes","He drank the spoiled milk","She woke the baby up","He stepped in the puddle","He set off the alarm","She jumped when hte bell rang","He dripped paint on the canvas","She kicked her dog"]
+var pa = ["He forgot his homework", "He arrived 5 min late for class","He bumped into a classmate in the hall", "He broke the window","The painter inhaled the fumes","He drank the spoiled milk","She woke the baby up","He stepped in the puddle","He set off the alarm","She jumped when the bell rang","He dripped paint on the canvas","She kicked her dog"]
 var pi = ["She cut him off driving","The boy knocked over the sand castle","She walked by without saying hello","He took an illegal left turn","He ripped the piece of paper","She sprayed him with water","The man left without leaving a tip","She made a mark on the paper","She drove over the speed limit","He deleted the email","She ignored the question","She averted her eyes"]
 
 
 
-var ua = ["He poked himself in the eye","He sneezed from the allergies","He stubbed his toes","He failed the driving test"," She tripped on the curb", "She caught a cold","She lost her keys","She broke her cell phone"]
+var ua = ["He poked himself in the eye","He sneezed from the allergies","He stubbed his toe","He failed the driving test"," She tripped on the curb", "She caught a cold","She lost her keys","She broke her cell phone"]
 
 var ui = ["He buttoned his jacket","He drew a picture of the beach","He erased the scribbles","He folded the letter carefully","She addressed the letter","She baked a cake","She changed the flat tire","She followed the recipe"]
 
@@ -222,4 +222,5 @@ var welcome4 = {
 timeline.push(welcome4);
 
 test(2400,'test','fast');
+
 
