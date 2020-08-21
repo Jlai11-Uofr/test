@@ -52,7 +52,8 @@ var fullscreen_trial = {
 button_label :"Start",
 type: 'fullscreen',
 message: '<p>In this next task you will see a series of sentences appear once at a time. Please read the following statements and decide whether these items describe actions that were done on purpose or by accident. The questions will only be displayed for a short period of time--please respond as quickly and accurately as possible.</p><p >Press i for intentional and e for accidental on your keyboard.</p>' ,
-fullscreen_mode: true
+fullscreen_mode: true,
+post_trial_gap:1500
 }
 
 timeline.push(fullscreen_trial);
