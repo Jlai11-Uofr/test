@@ -51,7 +51,7 @@ var ui_shuffled = jsPsych.randomization.repeat(ui, 1);
 var fullscreen_trial = {
 button_label :"Start",
 type: 'fullscreen',
-message: '<p>Click start to Begin this phase of the experiment</p>',
+message: '<p>Click start to enter full screen and start the experiment</p>',
 fullscreen_mode: true
 }
 
@@ -138,15 +138,7 @@ practice(5000,'practice','slow');
 
 
 
- var welcome1 = {
-     type: 'image-button-response',
-     stimulus:  path+'img/stopsign.png',
-     choices: ['Continue'],
-     post_trial_gap: 1500,
-     prompt: "Congrats! You finished the practice round! Click continue to start the test round"
- };
 
-timeline.push(welcome1);
 var j;
 
 
@@ -201,25 +193,11 @@ test(5000,"test","slow");
 //timeline.push(shuffledArray);
 
 
-var welcome4 = {
-    type: 'image-button-response',
-    stimulus:  path+'img/stopsign.png',
-    choices: ['Continue'],
-    post_trial_gap: 1500,
-    prompt: "Congrats! You finished the test round! Click continue to start the practice round where there is 2400 ms time limit"
-};
 
-timeline.push(welcome4);
+
+
 
 practice(2400,'practice','fast');
-var welcome4 = {
-    type: 'image-button-response',
-    stimulus: path+ 'img/stopsign.png',
-    choices: ['Continue'],
-    post_trial_gap: 1500,
-    prompt:"Start test"
-};
-timeline.push(welcome4);
 
 test(2400,'test','fast');
 
