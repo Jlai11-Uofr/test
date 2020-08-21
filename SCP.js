@@ -43,7 +43,7 @@ var ui_shuffled = jsPsych.randomization.repeat(ui, 1);
 //Essentially task consits of 8 UA/UB slow.
 //Then we go and do test the slow
 
-//Practice fast
+
 
 //Do fast
 
@@ -51,18 +51,13 @@ var ui_shuffled = jsPsych.randomization.repeat(ui, 1);
 var fullscreen_trial = {
 button_label :"Start",
 type: 'fullscreen',
-message: '<p>Click start to enter full screen and start the experiment</p>',
+message: '<p>In this next task you will see a series of sentences appear once at a time. Please read the following statements and decide whether these items describe actions that were done on purpose or by accident. The questions will only be displayed for a short period of time--please respond as quickly and accurately as possible.</p><p >Press i for intentional and e for accidental on your keyboard.</p>' ,
 fullscreen_mode: true
 }
 
 timeline.push(fullscreen_trial);
 
 
-var welcome = {
-  type: "html-keyboard-response",
-  stimulus: '<p >Press e for Intentional and i for accidental. Press any key to begin the practice round</p>'
-};
-timeline.push(welcome);
 
 
 var practice_max = 4;
@@ -200,5 +195,4 @@ test(5000,"test","slow");
 practice(2400,'practice','fast');
 
 test(2400,'test','fast');
-
 
