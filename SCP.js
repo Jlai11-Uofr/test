@@ -51,7 +51,7 @@ var ui_shuffled = jsPsych.randomization.repeat(ui, 1);
 var fullscreen_trial = {
 button_label :"Start",
 type: 'fullscreen',
-message: '<p>In this next task you will see a series of sentences appear once at a time. Please read the following statements and decide whether these items describe actions that were done on purpose or by accident. The questions will only be displayed for a short period of time--please respond as quickly and accurately as possible.</p><p >Press i for intentional and e for accidental on your keyboard.</p>' ,
+message: '<p>In this next task you will see a series of sentences appear one at a time.Please read the following statements and decide whether these items describe actions that were done accidentally OR on purpose. The questions will only be displayed for a short period of time--please respond as quickly and accurately as possible.</p><p><br><br>  </p><p>Press e for accidental and i for intentional on your keyboard.</p>' ,
 fullscreen_mode: true,
 post_trial_gap:1500
 }
@@ -196,4 +196,3 @@ test(5000,"test","slow");
 practice(2400,'practice','fast');
 
 test(2400,'test','fast');
-
