@@ -82,49 +82,24 @@ timeline.push(fullscreen_trial);
        }
 
    };
-
-   var if_trial = {
-    type: 'html-keyboard-response',
-    stimulus: 'Not quite! please press E for accidental',
-    choices: ['e']
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
  timeline.push(hi);
-var if_node = {
-    timeline: [if_trial],
-    conditional_function: function(){
-        // get the data from the previous trial,
-        // and check which key was pressed
-        var data = jsPsych.data.get().last(1).values()[0];
-        if(data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode('e')){
-            return false;
-        } else {
-             return true;
-        }
-    }
-}
-timeline.push(if_node);
-var if_trial = {
- type: 'html-keyboard-response',
- stimulus: 'Right! Press E when the action is accidental',
- choices: ['e']
-}
+ var feedback = {
+   type: 'html-button-response',
+   stimulus: function(){
+     var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
+     if(last_trial_correct){
+       return'<p>Right! Press E when the action is accidental</p><br><br>';
+     } else {
+       return  "<p>That's not quite right. You should have selected e</p><br><br>";
+     }
+   },
+   choices:['Continue'],
+   prompt: "Let's try another one"
+ }
 
 
+timeline.push(feedback)
 
-timeline.push(if_trial);
 
 
 
@@ -135,7 +110,7 @@ var hi = {
      post_trial_gap: 1500,
 
      on_finish: function(data){
-     if(data.key_press == 69){
+     if(data.key_press == 73){
        data.correct = true; // can add property correct by modify data object directly
          } else {
            data.correct = false;
@@ -144,47 +119,24 @@ var hi = {
 
  };
 
- var if_trial = {
-  type: 'html-keyboard-response',
-  stimulus: 'Not quite! please press i for intentional',
-  choices: ['i']
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 timeline.push(hi);
-var if_node = {
-  timeline: [if_trial],
-  conditional_function: function(){
-      // get the data from the previous trial,
-      // and check which key was pressed
-      var data = jsPsych.data.get().last(1).values()[0];
-      if(data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode('i')){
-          return false;
-      } else {
-           return true;
-      }
-  }
-}
-timeline.push(if_node);
-var if_trial = {
-type: 'html-keyboard-response',
-stimulus: 'Right! Press i when the action is intentional',
-choices: ['i'],
-post_trial_gap : 1500
+var feedback = {
+  type: 'html-button-response',
+  stimulus: function(){
+    var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
+    if(last_trial_correct){
+      return'<p>Right! Press I when the action is accidental</p><br><br>';
+    } else {
+      return  "<p>That's not quite right. You should have selected i</p><br><br>";
+    }
+  },
+  choices:['Continue'],
+  prompt: "Let's start the test now"
 }
 
 
+timeline.push(feedback)
 
 timeline.push(if_trial);
 
