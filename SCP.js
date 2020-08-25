@@ -59,13 +59,143 @@ post_trial_gap:1500
 timeline.push(fullscreen_trial);
 
 
+ var truth;
 
 
-var practice_max = 4;
-var test_max = 6;
+ var practice_max = 4;
+ var test_max = 6;
 
 
-var i;
+
+  var hi = {
+      type: 'html-keyboard-response',
+       stimulus: "Which key should you press if you think the action is ACCIDENTAL",
+      choices: ['e', 'i'],
+       post_trial_gap: 1500,
+
+       on_finish: function(data){
+       if(data.key_press == 69){
+         data.correct = true; // can add property correct by modify data object directly
+           } else {
+             data.correct = false;
+           }
+       }
+
+   };
+
+   var if_trial = {
+    type: 'html-keyboard-response',
+    stimulus: 'Not quite! please press E for accidental',
+    choices: ['e']
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+ timeline.push(hi);
+var if_node = {
+    timeline: [if_trial],
+    conditional_function: function(){
+        // get the data from the previous trial,
+        // and check which key was pressed
+        var data = jsPsych.data.get().last(1).values()[0];
+        if(data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode('e')){
+            return false;
+        } else {
+             return true;
+        }
+    }
+}
+timeline.push(if_node);
+var if_trial = {
+ type: 'html-keyboard-response',
+ stimulus: 'Right! Press E when the action is accidental',
+ choices: ['e']
+}
+
+
+
+timeline.push(if_trial);
+
+
+
+var hi = {
+    type: 'html-keyboard-response',
+     stimulus: "Which key should you press if you think the action is INTENTIONAL",
+    choices: ['e', 'i'],
+     post_trial_gap: 1500,
+
+     on_finish: function(data){
+     if(data.key_press == 69){
+       data.correct = true; // can add property correct by modify data object directly
+         } else {
+           data.correct = false;
+         }
+     }
+
+ };
+
+ var if_trial = {
+  type: 'html-keyboard-response',
+  stimulus: 'Not quite! please press i for intentional',
+  choices: ['i']
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+timeline.push(hi);
+var if_node = {
+  timeline: [if_trial],
+  conditional_function: function(){
+      // get the data from the previous trial,
+      // and check which key was pressed
+      var data = jsPsych.data.get().last(1).values()[0];
+      if(data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode('i')){
+          return false;
+      } else {
+           return true;
+      }
+  }
+}
+timeline.push(if_node);
+var if_trial = {
+type: 'html-keyboard-response',
+stimulus: 'Right! Press i when the action is intentional',
+choices: ['i'],
+post_trial_gap : 1500
+}
+
+
+
+timeline.push(if_trial);
+
+
+
+
+
+
+
+
+
 
 
 
@@ -77,8 +207,8 @@ for (i = 0 ; i < 4; ++i)
 
    var trial = {
        type: 'html-keyboard-response',
-       prompt:ua_shuffled.pop(),
-        stimulus: '<p style="font-weight: bold;">Press e for accidental and i for intentional on your keyboard.</p><br><br><br><br>',
+       prompt: ua_shuffled.pop(),
+        stimulus: '<p class ="gg" style="color:rgb(128,128,128);">E = accidental &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I = intentional</p><br><br><br><br>',
        choices: ['e', 'i'],
        trial_duration: time,
         post_trial_gap: 1500,
@@ -96,7 +226,7 @@ Practice.push(trial)
 var trial1 = {
        type: 'html-keyboard-response',
        prompt:ui_shuffled.pop(),
-        stimulus: '<p style="font-weight: bold;">Press e for accidental and i for intentional on your keyboard.</p><br><br><br><br> ',
+      stimulus: '<p class ="gg" style="color:rgb(128,128,128);">E = accidental &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I = intentional</p><br><br><br><br>',
        choices: ['e', 'i'],
        trial_duration: time,
         post_trial_gap: 1500,
@@ -148,7 +278,7 @@ for( j = 0 ; j < 6; ++j) {
   var trial4 = {
       type: 'html-keyboard-response',
       prompt:pa_shuffled.pop(),
-        stimulus: '<p style="font-weight: bold;">Press e for accidental and i for intentional on your keyboard.</p><br><br><br><br>',
+    stimulus: '<p class ="gg" style="color:rgb(128,128,128);">E = accidental &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I = intentional</p><br><br><br><br>',
       choices: ['e', 'i'],
       trial_duration: time,
       post_trial_gap: 1500,
@@ -164,7 +294,7 @@ Practice.push(trial4);
   var trial5 = {
       type: 'html-keyboard-response',
       prompt:pi_shuffled.pop(),
-        stimulus: '<p style="font-weight: bold;">Press e for accidental and i for intentional on your keyboard.</p><br><br><br><br>',
+  stimulus: '<p class ="gg" style="color:rgb(128,128,128);">E = accidental &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I = intentional</p><br><br><br><br>',
       choices: ['e', 'i'],
       trial_duration: time,
       post_trial_gap: 1500,
@@ -200,3 +330,4 @@ test(5000,"test","slow");
 practice(2400,'practice','fast');
 
 test(2400,'test','fast');
+
