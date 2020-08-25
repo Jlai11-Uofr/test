@@ -138,7 +138,7 @@ var feedback = {
 
 timeline.push(feedback)
 
-timeline.push(if_trial);
+
 
 
 
@@ -282,4 +282,3 @@ test(5000,"test","slow");
 practice(2400,'practice','fast');
 
 test(2400,'test','fast');
-
