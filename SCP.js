@@ -77,7 +77,8 @@ for (i = 0 ; i < 4; ++i)
 
    var trial = {
        type: 'html-keyboard-response',
-       stimulus:ua_shuffled.pop(),
+       prompt:ua_shuffled.pop(),
+        stimulus: '<p style="font-weight: bold;">Press e for accidental and i for intentional on your keyboard.</p><br><br><br><br>',
        choices: ['e', 'i'],
        trial_duration: time,
         post_trial_gap: 1500,
@@ -94,7 +95,8 @@ Practice.push(trial)
 
 var trial1 = {
        type: 'html-keyboard-response',
-       stimulus:ui_shuffled.pop(),
+       prompt:ui_shuffled.pop(),
+        stimulus: '<p style="font-weight: bold;">Press e for accidental and i for intentional on your keyboard.</p><br><br><br><br> ',
        choices: ['e', 'i'],
        trial_duration: time,
         post_trial_gap: 1500,
@@ -145,7 +147,8 @@ function test(time,type,speed) {
 for( j = 0 ; j < 6; ++j) {
   var trial4 = {
       type: 'html-keyboard-response',
-      stimulus:pa_shuffled.pop(),
+      prompt:pa_shuffled.pop(),
+        stimulus: '<p style="font-weight: bold;">Press e for accidental and i for intentional on your keyboard.</p><br><br><br><br>',
       choices: ['e', 'i'],
       trial_duration: time,
       post_trial_gap: 1500,
@@ -160,7 +163,8 @@ Practice.push(trial4);
 
   var trial5 = {
       type: 'html-keyboard-response',
-      stimulus:pi_shuffled.pop(),
+      prompt:pi_shuffled.pop(),
+        stimulus: '<p style="font-weight: bold;">Press e for accidental and i for intentional on your keyboard.</p><br><br><br><br>',
       choices: ['e', 'i'],
       trial_duration: time,
       post_trial_gap: 1500,
@@ -196,4 +200,3 @@ test(5000,"test","slow");
 practice(2400,'practice','fast');
 
 test(2400,'test','fast');
-
