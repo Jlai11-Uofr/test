@@ -70,8 +70,7 @@ timeline.push(fullscreen_trial);
   var hi = {
       type: 'html-keyboard-response',
        stimulus: "Which key should you press if you think the action is ACCIDENTAL",
-      choices: ['e', 'i'],
-       post_trial_gap: 1500,
+
 
        on_finish: function(data){
        if(data.key_press == 69){
@@ -88,13 +87,13 @@ timeline.push(fullscreen_trial);
    stimulus: function(){
      var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
      if(last_trial_correct){
-       return'<p>Right! Press E when the action is accidental</p><br><br>';
+       return"<p>Right! Press E when the action is accidental<br><br>Let's try another one</p>";
      } else {
-       return  "<p>That's not quite right. You should have selected e</p><br><br>";
+       return  "<p>That's not quite right. You should have selected e <br><br>Let's try another one </p>";
      }
    },
-   choices:['Continue'],
-   prompt: "Let's try another one"
+   choices:['Continue']
+
  }
 
 
@@ -106,8 +105,8 @@ timeline.push(feedback)
 var hi = {
     type: 'html-keyboard-response',
      stimulus: "Which key should you press if you think the action is INTENTIONAL",
-    choices: ['e', 'i'],
-     post_trial_gap: 1500,
+
+
 
      on_finish: function(data){
      if(data.key_press == 73){
@@ -126,13 +125,12 @@ var feedback = {
   stimulus: function(){
     var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
     if(last_trial_correct){
-      return'<p>Right! Press I when the action is accidental</p><br><br>';
+       return"<p>Right! Press i when the action is accidental<br><br>Let's try another one</p>";
     } else {
-      return  "<p>That's not quite right. You should have selected i</p><br><br>";
+       return  "<p>That's not quite right. You should have selected i <br><br>Let's start the test now. Press continue to begin.</p>";
     }
   },
-  choices:['Continue'],
-  prompt: "Let's start the test now"
+  choices:['Continue']
 }
 
 
