@@ -125,7 +125,7 @@ var feedback = {
   stimulus: function(){
     var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
     if(last_trial_correct){
-       return"<p>Right! Press i when the action is accidental<br><br>Let's try another one</p>";
+       return"<p>Right! Press i when the action is accidental<br><br>Let's start the test now. Press continue to begin.</p>";
     } else {
        return  "<p>That's not quite right. You should have selected i <br><br>Let's start the test now. Press continue to begin.</p>";
     }
