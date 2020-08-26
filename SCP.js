@@ -69,7 +69,7 @@ timeline.push(fullscreen_trial);
 
   var hi = {
       type: 'html-keyboard-response',
-       stimulus: "Which key should you press if you think the action is ACCIDENTAL",
+       stimulus: "Which key should you press if you think the action is ACCIDENTAL?",
 
 
        on_finish: function(data){
@@ -104,7 +104,7 @@ timeline.push(feedback)
 
 var hi = {
     type: 'html-keyboard-response',
-     stimulus: "Which key should you press if you think the action is INTENTIONAL",
+     stimulus: "Which key should you press if you think the action is INTENTIONAL?",
 
 
 
