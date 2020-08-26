@@ -130,7 +130,8 @@ var feedback = {
        return  "<p>That's not quite right. You should have selected i <br><br>Let's start the test now. Press continue to begin.</p>";
     }
   },
-  choices:['Continue']
+  choices:['Continue'],
+  post_trial_gap:1500
 }
 
 
