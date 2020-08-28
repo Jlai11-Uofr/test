@@ -92,7 +92,7 @@ timeline.push(fullscreen_trial);
        return  "<p class ='hi'>That's not quite right. You should have selected e. <br><br>Let's try another one. </p>";
      }
    },
-   choices:['Continue']
+   choices:['Start']
 
  }
 
@@ -146,11 +146,6 @@ timeline.push(feedback)
 
 
 
-
-
-
-
-
 function practice(time,type,speed){
 var Practice = [];
 for (i = 0 ; i < 4; ++i)
@@ -159,7 +154,7 @@ for (i = 0 ; i < 4; ++i)
    var trial = {
        type: 'html-keyboard-response',
        stimulus: ua_shuffled.pop(),
-       prompt: '<br><br><br><br><p class ="gg" style="color:rgb(128,128,128);">E = accidental &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I = intentional</p>',
+       prompt: '<p class ="gg" style="color:rgb(128,128,128);">E = accidental &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I = intentional</p>',
        choices: ['e', 'i'],
        trial_duration: time,
         post_trial_gap: 1500,
@@ -177,7 +172,7 @@ Practice.push(trial)
 var trial1 = {
        type: 'html-keyboard-response',
        stimulus:ui_shuffled.pop(),
-       prompt: '<br><br><br><br><p class ="gg" style="color:rgb(128,128,128);">E = accidental &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I = intentional</p>',
+      prompt: '<p class ="gg" style="color:rgb(128,128,128);">E = accidental &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I = intentional</p>',
        choices: ['e', 'i'],
        trial_duration: time,
         post_trial_gap: 1500,
@@ -188,6 +183,7 @@ var trial1 = {
  }
    };
 Practice.push(trial1);
+
 //timeline.push(trial1);
 
 
@@ -209,6 +205,19 @@ Practice.push(trial1);
 
 
 practice(5000,'practice','slow');
+var welcome1 = {
+    type: 'html-button-response',
+
+
+    choices: ['Start'],
+    post_trial_gap: 1500,
+    stimulus: "<p class = 'hi'> Ok, the practice is over. Now you'll complete the experiment. Remember e=accidental and i=intentional. Please respond as accurately as possible within the time period that the sentence is on the screen. Press start when you're ready to begin.</p>"
+  }
+
+timeline.push(welcome1);
+
+
+
 
 
 
@@ -229,7 +238,7 @@ for( j = 0 ; j < 6; ++j) {
   var trial4 = {
       type: 'html-keyboard-response',
       stimulus:pa_shuffled.pop(),
-       prompt: '<br><br><br><br><p class ="gg" style="color:rgb(128,128,128);">E = accidental &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I = intentional</p>',
+       prompt: '<p class ="gg" style="color:rgb(128,128,128);">E = accidental &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I = intentional</p>',
       choices: ['e', 'i'],
       trial_duration: time,
       post_trial_gap: 1500,
@@ -245,7 +254,7 @@ Practice.push(trial4);
   var trial5 = {
       type: 'html-keyboard-response',
       stimulus:pi_shuffled.pop(),
-       prompt: '<br><br><br><br><p class ="gg" style="color:rgb(128,128,128);">E = accidental &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I = intentional</p>',
+       prompt: '<p class ="gg" style="color:rgb(128,128,128);">E = accidental &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I = intentional</p>',
       choices: ['e', 'i'],
       trial_duration: time,
       post_trial_gap: 1500,
@@ -269,8 +278,19 @@ timeline.push(shuffledArray[z]);
 
 }
 }
-
 test(5000,"test","slow");
+var welcome1 = {
+    type: 'html-button-response',
+
+
+    choices: ['Start'],
+    post_trial_gap: 1500,
+    stimulus: " <p class = 'hi' > Great. Now we're going to have you do the same task, except you'll have less time to make your response. That is, the sentences will be on the screen for a shorter period of time. Make sure to make a response while the sentence is still on the screen. We'll start with a few practice trials. Remember, e=accidental and i=intentional. Respond as accurately as possible within the time period that the sentence is on the screen. When you're ready to begin, press start. </p>"
+  }
+
+timeline.push(welcome1);
+
+
 //timeline.push(shuffledArray);
 
 
@@ -279,5 +299,16 @@ test(5000,"test","slow");
 
 
 practice(2400,'practice','fast');
+
+var welcome1 = {
+    type: 'html-button-response',
+
+
+    choices: ['Start'],
+    post_trial_gap: 1500,
+    stimulus: " <p class = 'hi' >Ok, the practice is over. Now you'll complete the experiment. Remember e=accidental and i=intentional. Please respond as accurately as possible within the time period that the sentence is on the screen. Press start when you're ready to begin. </p>"
+  }
+
+
 
 test(2400,'test','fast');
