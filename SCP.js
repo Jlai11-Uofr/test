@@ -140,9 +140,17 @@ timeline.push(feedback)
 
 
 
+var welcome1 = {
+    type: 'html-button-response',
 
 
+    choices: ['Start'],
+    post_trial_gap: 1500,
+    stimulus: " <p class = 'hi' >First, we'll start with some practice trials. You'll have 5 s to make your response. Make sure to respond within this time period before the sentence is taken off the screen. Please respond as accurately as possible within the time period that the sentence is on the screen. When you're ready to begin the practice, press start. </p>"
+  }
 
+
+timeline.push(welcome1);
 
 
 
@@ -312,3 +320,4 @@ var welcome1 = {
 
 
 test(2400,'test','fast');
+
