@@ -51,7 +51,7 @@ var ui_shuffled = jsPsych.randomization.repeat(ui, 1);
 var fullscreen_trial = {
 button_label :"Start",
 type: 'fullscreen',
-message: '<p>In this next task you will see a series of sentences appear one at a time. Please read the following statements and decide whether these items describe actions that were done accidentally OR intentionally. The questions will only be displayed for a short period of time--please respond as quickly and accurately as possible.</p><p><br><br>  </p><p>Press e for accidental and i for intentional on your keyboard.</p>' ,
+message: '<p class ="hi">In this next task you will see a series of sentences appear one at a time. Please read the following statements and decide whether these items describe actions that were done accidentally OR intentionally. The questions will only be displayed for a short period of time--please respond as quickly and accurately as possible.</p><p><br><br>  </p><p class ="hi">Press e for accidental and i for intentional on your keyboard.</p>' ,
 fullscreen_mode: true,
 post_trial_gap:1500
 }
@@ -87,9 +87,9 @@ timeline.push(fullscreen_trial);
    stimulus: function(){
      var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
      if(last_trial_correct){
-       return"<p>Right! Press E when the action is accidental<br><br>Let's try another one</p>";
+       return"<p>Right! Press E when the action is accidental.<br><br>Let's try another one.</p>";
      } else {
-       return  "<p>That's not quite right. You should have selected e <br><br>Let's try another one </p>";
+       return  "<p>That's not quite right. You should have selected e. <br><br>Let's try another one. </p>";
      }
    },
    choices:['Continue']
@@ -125,9 +125,9 @@ var feedback = {
   stimulus: function(){
     var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
     if(last_trial_correct){
-       return"<p>Right! Press i when the action is accidental<br><br>Let's start the test now. Press continue to begin.</p>";
+       return"<p>Right! Press i when the action is accidental.<br><br>Let's start the test now. Press continue to begin.</p>";
     } else {
-       return  "<p>That's not quite right. You should have selected i <br><br>Let's start the test now. Press continue to begin.</p>";
+       return  "<p>That's not quite right. You should have selected i. <br><br>Let's start the test now. Press continue to begin.</p>";
     }
   },
   choices:['Continue'],
@@ -158,8 +158,8 @@ for (i = 0 ; i < 4; ++i)
 
    var trial = {
        type: 'html-keyboard-response',
-       prompt: ua_shuffled.pop(),
-        stimulus: '<p class ="gg" style="color:rgb(128,128,128);">E = accidental &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I = intentional</p><br><br><br><br>',
+       stimulus: ua_shuffled.pop(),
+       prompt: '<br><br><br><br><p class ="gg" style="color:rgb(128,128,128);">E = accidental &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I = intentional</p>',
        choices: ['e', 'i'],
        trial_duration: time,
         post_trial_gap: 1500,
@@ -176,8 +176,8 @@ Practice.push(trial)
 
 var trial1 = {
        type: 'html-keyboard-response',
-       prompt:ui_shuffled.pop(),
-      stimulus: '<p class ="gg" style="color:rgb(128,128,128);">E = accidental &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I = intentional</p><br><br><br><br>',
+       stimulus:ui_shuffled.pop(),
+       prompt: '<br><br><br><br><p class ="gg" style="color:rgb(128,128,128);">E = accidental &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I = intentional</p>',
        choices: ['e', 'i'],
        trial_duration: time,
         post_trial_gap: 1500,
@@ -228,8 +228,8 @@ function test(time,type,speed) {
 for( j = 0 ; j < 6; ++j) {
   var trial4 = {
       type: 'html-keyboard-response',
-      prompt:pa_shuffled.pop(),
-    stimulus: '<p class ="gg" style="color:rgb(128,128,128);">E = accidental &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I = intentional</p><br><br><br><br>',
+      stimulus:pa_shuffled.pop(),
+       prompt: '<br><br><br><br><p class ="gg" style="color:rgb(128,128,128);">E = accidental &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I = intentional</p>',
       choices: ['e', 'i'],
       trial_duration: time,
       post_trial_gap: 1500,
@@ -244,8 +244,8 @@ Practice.push(trial4);
 
   var trial5 = {
       type: 'html-keyboard-response',
-      prompt:pi_shuffled.pop(),
-  stimulus: '<p class ="gg" style="color:rgb(128,128,128);">E = accidental &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I = intentional</p><br><br><br><br>',
+      stimulus:pi_shuffled.pop(),
+       prompt: '<br><br><br><br><p class ="gg" style="color:rgb(128,128,128);">E = accidental &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I = intentional</p>',
       choices: ['e', 'i'],
       trial_duration: time,
       post_trial_gap: 1500,
@@ -281,3 +281,4 @@ test(5000,"test","slow");
 practice(2400,'practice','fast');
 
 test(2400,'test','fast');
+
