@@ -51,7 +51,7 @@ var ui_shuffled = jsPsych.randomization.repeat(ui, 1);
 var fullscreen_trial = {
 button_label :"Start",
 type: 'fullscreen',
-message: '<p class ="hi">In this next task you will see a series of sentences appear one at a time. Please read the following statements and decide whether these items describe actions that were done accidentally OR intentionally. The questions will only be displayed for a short period of time--please respond as quickly and accurately as possible.</p><p><br><br>  </p><p class ="hi">Press e for accidental and i for intentional on your keyboard.</p>' ,
+message: '<p class ="hi">In this next task you will see a series of sentences appear on the screen one at a time. Please read each sentence carefully and decide whether the action described in the sentence was done ACCIDENTALLY or INTENTIONALLY. You will have a limited amount of time to make your judgment. Please respond as accurately as possible while the sentence is still on the screen.</p><p><br><br>  </p><p class ="hi">While performing the task, press E for ACCIDENTAL and I for INTENTIONAL on your keyboard..</p>' ,
 fullscreen_mode: true,
 post_trial_gap:1500
 }
@@ -146,7 +146,7 @@ var welcome1 = {
 
     choices: ['Start'],
     post_trial_gap: 1500,
-    stimulus: " <p class = 'hi' >First, we'll start with some practice trials. You'll have 5 s to make your response. Make sure to respond within this time period before the sentence is taken off the screen. Please respond as accurately as possible within the time period that the sentence is on the screen. When you're ready to begin the practice, press start. </p>"
+    stimulus: " <p class = 'hi' >First, we'll start with some practice trials. You'll have 5 seconds to make your response. Make sure to respond within this time period before the sentence is taken off the screen. Please respond as accurately as possible within the time period that the sentence is on the screen. When you're ready to begin the practice, press start. </p>"
   }
 
 
@@ -320,4 +320,3 @@ var welcome1 = {
 
 
 test(2400,'test','fast');
-
