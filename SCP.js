@@ -89,7 +89,7 @@ timeline.push(fullscreen_trial);
      if(last_trial_correct){
        return "<p class ='hi'>Right! Press E when the action is accidental.<br><br>Let's try another one.</p>";
      } else {
-       return  "<p class ='hi'>That's not quite right. You should have selected e. <br><br>Let's try another one. </p>";
+       return  "<p class ='hi'>That's not quite right. You should have selected E. <br><br>Let's try another one. </p>";
      }
    },
    choices:['Start']
@@ -125,9 +125,9 @@ var feedback = {
   stimulus: function(){
     var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
     if(last_trial_correct){
-       return"<p class ='hi'>Right! Press i when the action is accidental.<br><br>Let's start the test now. Press continue to begin.</p>";
+       return"<p class ='hi'>Right! Press I when the action is accidental.<br><br>Let's start the test now. Press continue to begin.</p>";
     } else {
-       return  "<p class ='hi'>That's not quite right. You should have selected i. <br><br>Let's start the test now. Press continue to begin.</p>";
+       return  "<p class ='hi'>That's not quite right. You should have selected I. <br><br>Let's start the test now. Press continue to begin.</p>";
     }
   },
   choices:['Continue'],
@@ -219,7 +219,7 @@ var welcome1 = {
 
     choices: ['Start'],
     post_trial_gap: 1500,
-    stimulus: "<p class = 'hi'> Ok, the practice is over. Now you'll complete the experiment. Remember e=accidental and i=intentional. Please respond as accurately as possible within the time period that the sentence is on the screen. Press start when you're ready to begin.</p>"
+    stimulus: "<p class = 'hi'> Ok, the practice is over. Now you'll complete the experiment. Remember E=accidental and I=intentional. Please respond as accurately as possible within the time period that the sentence is on the screen. Press start when you're ready to begin.</p>"
   }
 
 timeline.push(welcome1);
@@ -293,7 +293,7 @@ var welcome1 = {
 
     choices: ['Start'],
     post_trial_gap: 1500,
-    stimulus: " <p class = 'hi' > Great. Now we're going to have you do the same task, except you'll have less time to make your response. That is, the sentences will be on the screen for a shorter period of time. Make sure to make a response while the sentence is still on the screen. We'll start with a few practice trials. Remember, e=accidental and i=intentional. Respond as accurately as possible within the time period that the sentence is on the screen. When you're ready to begin, press start. </p>"
+    stimulus: " <p class = 'hi' >Great. Now we're going to have you do the same task, except you'll have less time to make your response. That is, the sentences will be on the screen for a shorter period of time - specifically, half the amount of the time they were on the screen previously. Make sure to make a response while the sentence is still on the screen. We'll start with a few practice trials. Remember, E=accidental and I=intentional. Respond as accurately as possible within the time period that the sentence is on the screen. When you're ready to begin, press start. </p>"
   }
 
 timeline.push(welcome1);
@@ -314,7 +314,7 @@ var welcome1 = {
 
     choices: ['Start'],
     post_trial_gap: 1500,
-    stimulus: " <p class = 'hi' >Ok, the practice is over. Now you'll complete the experiment. Remember e=accidental and i=intentional. Please respond as accurately as possible within the time period that the sentence is on the screen. Press start when you're ready to begin. </p>"
+    stimulus: " <p class = 'hi' >Ok, the practice is over. Now you'll complete the experiment. Remember E=accidental and I=intentional. Please respond as accurately as possible within the time period that the sentence is on the screen. Press start when you're ready to begin. </p>"
   }
 timeline.push(welcome1);
 
